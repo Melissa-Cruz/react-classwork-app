@@ -7,7 +7,14 @@ console.log("todos :>> ", todos);
 
 function App() {
   const items = ["seltzer", "coke zero", "chocolate", "kiwi"];
-  
+  const handleItemNameChange = (event)=>{
+    console.log(event.target.value)
+  };
+
+  const handleFormSubmit = (event)=>{
+    console.log(event.target.value)
+  };
+
 
   return (
     <div>
@@ -15,8 +22,11 @@ function App() {
       <Users/>
       <Todos/>
       <h2>Classwork P3</h2>
-      <ShoppingListForm/>
-      <ShoppingList/>
+      <ShoppingListForm
+        handleFormSubmit ={handleFormSubmit}
+        handleItemNameChange = {handleItemNameChange}
+      />
+      <ShoppingList items={items}/>
     </div>
   );
 }
@@ -64,42 +74,34 @@ function Todos() {
 }
 
 
-function ShoppingListForm (){
-  const handleItemNameChange = (event)=>{
-    console.log(event)
-  };
+function ShoppingListForm (props){
 
-  const handleFormSubmit = (event)=>{
-    console.log(event)
-  };
 
   return(
 
     <div>
-      <form>
+      <form onSubmit={props.handleFormSubmit} >
         <h2>Shopping List Form</h2>
-        <label></label>
+        <label htmlFor="item">Item name:</label>
         <input
         type ="text"
         id="item"
         name="item"
-        onChange={handleItemNameChange}
+        onChange={props.handleItemNameChange}
         />
-        <button type="submit" onSubmit={handleFormSubmit}>Submit</button>
+        <button type="submit">Submit</button>
 
       </form>
     </div>
   )
 }
 
-function ShoppingList(){
+function ShoppingList(props){
   return(
   <ul>
-    {items.map((item)=>(
+    {props.items.map((item)=>(
       <li>{item}</li>
-
-    ))
-    }
+    ))}
   </ul>
   )
 }
