@@ -1,5 +1,6 @@
 import users from "./data/users";
 import todos from "./data/todos";
+import React from "react"; 
 
 console.log("users :>> ", users);
 console.log("todos :>> ", todos);
@@ -74,20 +75,18 @@ function Todos() {
 }
 
 
-function ShoppingListForm (props){
-
-
+function ShoppingListForm ({handleFormSubmit,handleItemNameChange }){
   return(
 
     <div>
-      <form onSubmit={props.handleFormSubmit} >
+      <form onSubmit={handleFormSubmit} >
         <h2>Shopping List Form</h2>
         <label htmlFor="item">Item name:</label>
         <input
         type ="text"
         id="item"
         name="item"
-        onChange={props.handleItemNameChange}
+        onChange={handleItemNameChange}
         />
         <button type="submit">Submit</button>
 
@@ -96,10 +95,10 @@ function ShoppingListForm (props){
   )
 }
 
-function ShoppingList(props){
+function ShoppingList({items}){
   return(
   <ul>
-    {props.items.map((item)=>(
+    {items.map((item)=>(
       <li>{item}</li>
     ))}
   </ul>
