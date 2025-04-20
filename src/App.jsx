@@ -1,6 +1,8 @@
 import users from "./data/users";
 import todos from "./data/todos";
 import React from "react"; 
+import './app.css'
+
 
 console.log("users :>> ", users);
 console.log("todos :>> ", todos);
@@ -15,6 +17,7 @@ function App() {
   const handleFormSubmit = (event)=>{
     console.log(event.target.value)
   };
+
 
 
   return (
