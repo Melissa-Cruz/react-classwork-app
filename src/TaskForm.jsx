@@ -1,8 +1,12 @@
-function TaskForm() {
+function TaskForm(props) {
   return (
-    <form>
+    <form onSubmit = {props.handleFormSubmit}>
       <label htmlFor="taskName">Task Name</label>
-      <input type="text" id="taskName" name="taskName" />
+      <input 
+        type="text" 
+        id="taskName" 
+        name="taskName" 
+      />
       <button type="submit">Submit</button>
     </form>
   );

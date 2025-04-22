@@ -1,9 +1,8 @@
-import tasks from "./data/tasks";
 
-function TaskList() {
+function TaskList(props) {
   return (
     <div>
-      {tasks.map((task) => (
+      {props.tasks.map((task) => (
         <ul key={task.id}>
           <li>Task: {task.title}</li>
           <li>Status: {task.status}</li>
